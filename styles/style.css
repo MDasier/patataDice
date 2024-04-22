@@ -80,13 +80,7 @@ footer {
 }
 
 /*ESTILOS PARA LA PANTALLA*/
-/*.countdown{
-    visibility: visible;
-    display: flex;
-    font-size: 74px;
-    margin-top: 100px;
-    justify-content: center;
-}*/
+
 #pantalla {
     width: 75%;
     height: 60%;
@@ -105,11 +99,41 @@ footer {
     justify-content:start;
     align-items: end;
 }
-#btnConfig{
-    display: none;
+
+#coloresJuego{
+    width: 60%;
+    height: 70%;
+    position: absolute;
+    top: 50px;
+    left: 100px;
+    justify-content:start;
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    /*grid-template-rows: 1fr 1fr;*/
 }
-#btnExtra{
-    display: none;
+.BOTONES{
+    text-align: center;
+    border: solid 2px;
+    border-color: #333;
+}
+.rojo{
+    background-color: red;
+    filter: brightness(50%);
+}
+.azul{
+    background-color: blue;
+    filter: brightness(50%);
+}
+.verde{
+    background-color: green;
+    filter: brightness(50%);
+}
+.amarillo{
+    background-color: yellow;
+    filter: brightness(50%);
+}
+.active{
+    filter: brightness(150%);
 }
 
 /*ESTILOS PARA EL ORDENADOR*/
@@ -160,8 +184,13 @@ footer {
     opacity: 0.6;
     cursor: not-allowed;
 }
+
+
+
+/*ESTILO PARA BOTONES CREADOS CON JS Y AÑADIDOS AL DOM*/
 .btnControl{
     background-color: #8d8a8a;
+    opacity: 0.7;
     height: 28px;
     width: 28px;
     padding: 0;

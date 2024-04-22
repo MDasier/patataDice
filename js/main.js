@@ -13,6 +13,7 @@ let pantalla = document.querySelector("#pantalla")
 let btnON = document.querySelector("#btnON")
 let luzOn = document.querySelector("#luzEncendido")
 let luzOff = document.querySelector("#luzApagado")
+const botonesColores = document.getElementsByClassName("BOTONES")
 
 //TODO CREAR BOTONES EN LA PANTALLA PARA CONTROLAR EL JUEGO
 
@@ -36,16 +37,14 @@ imgConfig.className="ajustes"//clase para la imagen
 botonPlay.appendChild(imgPlay)//añadimos la imagen al boton
 botonPause.appendChild(imgPause)//añadimos la imagen al boton
 botonConfig.appendChild(imgConfig)//añadimos la imagen al boton    
-/*
-pantalla.appendChild(botonPlay)//añadimos el boton al DOM
-pantalla.appendChild(botonPause)//añadimos el boton al DOM
-pantalla.appendChild(botonConfig)//añadimos el boton al DOM
-*/
 
 
 //*EVENTLISTENERS
 btnON.addEventListener("click", encenderPantalla)
-botonPlay.addEventListener("click", empezarJuego)
+botonPlay.addEventListener("click", empezarJuego)//CON LA PANTALLA ENCENDIDA Y CLICANDO EN BOTONPLAY
+botonConfig.addEventListener("click", ()=>{
+    console.log("BOTON CONFIGURACION")
+})//CON LA PANTALLA ENCENDIDA Y CLICANDO EN BOTONPLAY
 
 //*FUNCIONES
 function encenderPantalla(){
@@ -75,21 +74,7 @@ function encenderPantalla(){
 }
 function empezarJuego(){
     console.log("PATATA DICE")
-    juego = new Juego()
+    juego = new Juego(botonesColores)
     juego.start()
+    console.log(botonesColores)
 }
-
-
-/* //EJEMPLO DE EVENTO CLICK EN PANTALLA QUE INICIA UN NUEVO JUEGO
-let pantalla = document.querySelector("#pantalla")
-pantalla.addEventListener("click", ()=>{
-    if(pantallaOn && juego === null){
-        pantalla.innerText=""
-        juego = new Juego()
-        juego.start()
-    }else if(pantallaOn && juego !== null){
-        console.log("click en pantalla, jugando!")
-        //lo que pasa cuando clickamos en pantalla de juego
-    }
-})
-*/
