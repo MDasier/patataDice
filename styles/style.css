@@ -80,6 +80,13 @@ footer {
 }
 
 /*ESTILOS PARA LA PANTALLA*/
+/*.countdown{
+    visibility: visible;
+    display: flex;
+    font-size: 74px;
+    margin-top: 100px;
+    justify-content: center;
+}*/
 #pantalla {
     width: 75%;
     height: 60%;
@@ -89,11 +96,14 @@ footer {
     min-height: 350px;
     border:solid 1px #888686;
     border-radius: 5px;
-    justify-content: center;
-    align-items: center;
     position:relative;
     overflow: hidden;
     margin-top: 10px;
+    cursor: crosshair;
+    display: flex;
+    flex-direction: column;
+    justify-content:start;
+    align-items: end;
 }
 #btnConfig{
     display: none;
@@ -145,4 +155,36 @@ footer {
 #btnON:hover{
     background-color: #333;
     color: #d1d0d0;
-}  
+}
+.disabled{
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+.btnControl{
+    background-color: #8d8a8a;
+    height: 28px;
+    width: 28px;
+    padding: 0;
+    margin: 0;
+}
+.play{
+    border: none;
+    background-image: url("../images/iconos/play.png");
+    background-size: cover;
+    height: 25px;
+    width: 25px;
+}
+.pause{
+    border: none;
+    background-image: url("../images/iconos/pausa.png");
+    background-size: cover;
+    height: 25px;
+    width: 25px;
+}
+.ajustes{
+    border: none;
+    background-image: url("../images/iconos/ajustes.png");
+    background-size: cover;
+    height: 25px;
+    width: 25px;
+}

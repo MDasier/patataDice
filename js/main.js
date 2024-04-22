@@ -1,65 +1,95 @@
 
-//TODO modificacion DOM 
-    //* Acceder a los elementos del DOM y modificarlos, crear nuevos...
-    //? Gestionar los eventos (Pulsa, clica..)
-
-//TODO gestion de clases
-    //* Gestion de métodos y funciones
-
-//TODO intervalos, timeouts y bucles
-    //* Control del juego mediante intervalos y acciones del usuario
-
-//TODO animaciones patataDice (colores, tiempos...)
-    //* Conseguir imagenes y sonidos para las patatas
-    //! HAY QUE DECIDIR COMO MOSTRAR LAS PATATAS EN LA PANTALLA:
-    //? TAMAÑOS-POSICION. APARECER-DESVANCER. ESTATICAS-DINAMICAS. COLORES-BRILLOS.
-
-
-
-
-//TODO Controlar los botones del ordenador (Cual es pulsable cada vez)
-    //* Controlar que no se pueda "apagar" si no está "encendido"
-
-//TODO Encender ordenador:
-    //*mostrar opciones: Empezar a jugar, cambiar dificultad, opciones de sonido
-//TODO Apagar ordenador: 
-    //*apagar pantalla, cerrar bucles/intervalos guardando partida, apagar luces de encendido y encender las de apagado
-
-    //? AL FINAL
-    //TODO gestion de sonido. Musica, sonidos de interaccion usuario, errores...
-    //* Conseguir sonidos para las acciones, menús y música de fondo del juego
+    
+    //TODO Conseguir sonidos para las acciones, menús y música de fondo del juego
     //! SI TODO VA BIEN --> control responsividad (controlar el tamaño/forma de pantalla)
 
-let juego;
+
+//*VARIABLES SCOPE GLOBAL
+let juego=null;
 let pantallaOn = false;
 
-let bntON = document.querySelector("#btnON")
-bntON.addEventListener("click", ()=>{
+//*ELEMENTOS DEL DOM
+let pantalla = document.querySelector("#pantalla")
+let btnON = document.querySelector("#btnON")
+let luzOn = document.querySelector("#luzEncendido")
+let luzOff = document.querySelector("#luzApagado")
+
+//TODO CREAR BOTONES EN LA PANTALLA PARA CONTROLAR EL JUEGO
+
+//*CREAMOS BOTONES PARA CONTROLAR EL JUEGO
+const botonPlay = document.createElement("button");//botonplay
+const botonPause = document.createElement("button");//botonPause
+const botonConfig = document.createElement("button");//botonConfig
+//*CREAMOS LAS IMAGENES PARA LOS BOTONES
+const imgPlay = document.createElement("img")//imagen del boton
+const imgPause = document.createElement("img")//imagen del boton
+const imgConfig = document.createElement("img")//imagen del boton
+//*AÑADIMOS ESTILOS
+botonPlay.className="btnControl"//clase para el boton
+imgPlay.className="play"//clase para la imagen
+botonPause.className="btnControl"//clase para el boton
+imgPause.className="pause"//clase para la imagen
+botonConfig.className="btnControl"//clase para el boton
+imgConfig.className="ajustes"//clase para la imagen
+
+//?INSERTAMOS LOS BOTONES EN EL DOM
+botonPlay.appendChild(imgPlay)//añadimos la imagen al boton
+botonPause.appendChild(imgPause)//añadimos la imagen al boton
+botonConfig.appendChild(imgConfig)//añadimos la imagen al boton    
+/*
+pantalla.appendChild(botonPlay)//añadimos el boton al DOM
+pantalla.appendChild(botonPause)//añadimos el boton al DOM
+pantalla.appendChild(botonConfig)//añadimos el boton al DOM
+*/
+
+
+//*EVENTLISTENERS
+btnON.addEventListener("click", encenderPantalla)
+botonPlay.addEventListener("click", empezarJuego)
+
+//*FUNCIONES
+function encenderPantalla(){
     if(pantallaOn){
         pantallaOn=false
         pantalla.classList.toggle("encenderPantalla")
         pantalla.classList.toggle("pantallaApagada")
-        pantalla.innerText="ENCIENDE EL ORDENADOR"
-        console.log("Apagar")
-        juego.stop()
-    }else{
+        luzOn.classList.toggle("luzON")
+        luzOff.classList.toggle("luzOFF")
+        botonPlay.remove()
+        botonPause.remove() 
+        botonConfig.remove() 
+        
+    }else{//EN CASO DE QUERER CONTROLAR EL ENCENDIDO Y APAGADO
         pantallaOn=true
-        pantalla.innerText="HAZ CLICK EN LA PANTALLA PARA EMPEZAR"
         pantalla.classList.toggle("encenderPantalla")
         pantalla.classList.toggle("pantallaApagada")
-        console.log("Encender")
+        luzOn.classList.toggle("luzON")
+        luzOff.classList.toggle("luzOFF")
+        pantalla.appendChild(botonPlay)//añadimos el boton al DOM
+        pantalla.appendChild(botonPause)//añadimos el boton al DOM
+        pantalla.appendChild(botonConfig)//añadimos el boton al DOM
+        
+        //bntON.disabled = true //deshabilita la funcion de "apagado"
+        //bntON.className="disabled" //estilo del cursor para botones deshabilitados
     }
-    
-})
+}
+function empezarJuego(){
+    console.log("PATATA DICE")
+    juego = new Juego()
+    juego.start()
+}
 
 
+/* //EJEMPLO DE EVENTO CLICK EN PANTALLA QUE INICIA UN NUEVO JUEGO
 let pantalla = document.querySelector("#pantalla")
 pantalla.addEventListener("click", ()=>{
-    if(pantallaOn){
+    if(pantallaOn && juego === null){
         pantalla.innerText=""
         juego = new Juego()
         juego.start()
-    }else{
-        console.log("Enciende la pantalla")
+    }else if(pantallaOn && juego !== null){
+        console.log("click en pantalla, jugando!")
+        //lo que pasa cuando clickamos en pantalla de juego
     }
 })
+*/
