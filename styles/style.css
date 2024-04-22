@@ -1,0 +1,140 @@
+/*    CONTROL MEDIA (RESPONSIVE)
+    Móvil pequeño: 360 x 640 px.
+    Smartphone grande: 720 x 1280 px.
+    Ordenador portátil medio: 1366 x 768 px.
+*/
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+/*PARTE DE ARRIBA - PANTALLA Y ORDENADOR*/
+.contenidoTotal {
+    background: rgb(253,45,249);
+    background: linear-gradient(0deg, rgba(253,45,249,0.5945844890690651) 0%, rgba(34,193,195,0.7822595590970763) 100%);
+    /*background-color: rgba(80, 79, 79, 0.8);*/
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin:0 auto;
+    padding-top: 20px;
+}
+
+/*PARTE DE ABAJO - TECLADO (Y RATON)*/
+footer {
+    /*  control de fondo inverso a contenidoTotal*/
+    background: linear-gradient(0deg, rgba(34,193,195,0.7822595590970763) 0%, rgba(253,45,249,0.5945844890690651)  100%);    
+    color: #d3cece;
+    height: 30vh;
+    display: flex;
+    justify-content: center;
+}
+
+/*MARCO DE PANTALLA*/
+.marco{
+    width: 80%;
+    height: 70%;
+    max-width: 540px;
+    max-height: 415px;
+    min-width: 520px;
+    min-height: 415px;
+    background-color:rgb(24, 24, 24);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    color: #888686;
+}
+.marcoLogo{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#logo{
+    width:20px;
+    border-radius: 2px;
+}
+
+/*MODOS DE PANTALLA*/
+.encenderPantalla {
+    background-color: #22c1c3;
+    box-shadow: inset 0 0 15px white, 0 0 25px cyan;
+}
+.pantallaGameOver {
+    background-color: #22c1c3;
+}
+
+.pantallaOpciones {
+    background-color: rgb(102, 105, 105);
+}
+.pantallaApagada{
+    background-color: rgb(0, 0, 0);
+}
+
+/*ESTILOS PARA LA PANTALLA*/
+.pantalla {
+    width: 75%;
+    height: 60%;
+    max-width: 600px;
+    max-height: 450px;
+    min-width: 500px;
+    min-height: 350px;
+    border:solid 1px #888686;
+    border-radius: 5px;
+    justify-content: center;
+    align-items: center;
+    position:relative;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+/*ESTILOS PARA EL ORDENADOR*/
+.ordenador {
+    width: 15%;
+    height: 70%;
+    max-width: 150px;
+    max-height: 415px;
+    min-height: 415px;
+    min-width: 150px;
+    border:solid 1px #d3cece;
+    border-radius: 10px;
+    background-color:rgb(24, 24, 24);
+    display: flex;
+    gap: 40px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/*ESTILO DE LOS BOTONES*/
+.luzEncendido{
+    background-color: mediumseagreen;
+}
+
+.luzApagado{
+    background-color: brown;
+}
+.btnEncendido{
+    box-shadow: inset 0 0 15px mediumseagreen, 0 0 10px rgb(91, 248, 104);
+}
+.btnApagado{
+    box-shadow: inset 0 0 15px brown, 0 0 10px rgb(204, 66, 66);
+}
+.btn{
+    border-radius: 10px;
+    background-color: #d1d0d0;
+    min-height: 25px;
+    min-width: 10px;
+}
+
+.btn:hover{
+    background-color: #333;
+    color: #d1d0d0;
+}  

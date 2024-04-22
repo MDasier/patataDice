@@ -1,14 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>PATATA DICE</title>
+    <link rel="stylesheet" href="./styles/style.css">
 </head>
 <body>
-    <!--Contenedor de la página total-->
-    <!--Contenedor del juego-->
-    <!--Contenedor de opciones del juego-->
-    <!--Contenedor de Game Over-->
+
+    <!--CONTENEDOR PRINCIPAL-->
+    <div class="contenidoTotal">
+        <!--MARCO DE LA PANTALLA-->
+        <div class="marco">
+            <!-- PANTALLA -->
+            <div class="pantalla pantallaApagada"></div>
+                
+            <div class="marcoLogo"><!--CONTENEDOR PARA EL LOGO Y LA MARCA-->
+                <img id="logo" src="./images/iconos/corsair.png" alt="Buccaneer" />
+                <p>Buccaneer</p>
+            </div>
+        </div>
+        
+        <!--TORRE PC-->
+        <div class="ordenador">
+            <!--LUCES DEL PCFAKE-->
+            <button class="luzEncendido"></button>
+            <button class="luzApagado btnApagado"></button>
+            <!--BOTONES DE CONTROL DE JUEGO-->
+            <button class="btn">ENCENDER</button>
+            <button class="btn">CONFIGURACION</button>
+            <button class="btn">REINICIAR</button>
+
+        </div>
+
+    </div>
+
+    <footer></footer>
+
+    <script src="./js/main.js"></script>
+
 </body>
 </html>
