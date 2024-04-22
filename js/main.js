@@ -28,7 +28,38 @@
     //? AL FINAL
     //TODO gestion de sonido. Musica, sonidos de interaccion usuario, errores...
     //* Conseguir sonidos para las acciones, menús y música de fondo del juego
-//! SI TODO VA BIEN --> POST IT pegado al marco que clicas y se abre mostrando como se juega (infojuego)
-//! SI TODO VA BIEN --> control responsividad (controlar el tamaño/forma de pantalla)
+    //! SI TODO VA BIEN --> control responsividad (controlar el tamaño/forma de pantalla)
+
+let juego;
+let pantallaOn = false;
+
+let bntON = document.querySelector("#btnON")
+bntON.addEventListener("click", ()=>{
+    if(pantallaOn){
+        pantallaOn=false
+        pantalla.classList.toggle("encenderPantalla")
+        pantalla.classList.toggle("pantallaApagada")
+        pantalla.innerText="ENCIENDE EL ORDENADOR"
+        console.log("Apagar")
+        juego.stop()
+    }else{
+        pantallaOn=true
+        pantalla.innerText="HAZ CLICK EN LA PANTALLA PARA EMPEZAR"
+        pantalla.classList.toggle("encenderPantalla")
+        pantalla.classList.toggle("pantallaApagada")
+        console.log("Encender")
+    }
+    
+})
 
 
+let pantalla = document.querySelector("#pantalla")
+pantalla.addEventListener("click", ()=>{
+    if(pantallaOn){
+        pantalla.innerText=""
+        juego = new Juego()
+        juego.start()
+    }else{
+        console.log("Enciende la pantalla")
+    }
+})

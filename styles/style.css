@@ -66,9 +66,10 @@ footer {
 .encenderPantalla {
     background-color: #22c1c3;
     box-shadow: inset 0 0 15px white, 0 0 25px cyan;
+    color:black;
 }
-.pantallaGameOver {
-    background-color: #22c1c3;
+.pantallaResultados {
+    background-color: #c9c9c9;
 }
 
 .pantallaOpciones {
@@ -79,7 +80,7 @@ footer {
 }
 
 /*ESTILOS PARA LA PANTALLA*/
-.pantalla {
+#pantalla {
     width: 75%;
     height: 60%;
     max-width: 600px;
@@ -94,9 +95,15 @@ footer {
     overflow: hidden;
     margin-top: 10px;
 }
+#btnConfig{
+    display: none;
+}
+#btnExtra{
+    display: none;
+}
 
 /*ESTILOS PARA EL ORDENADOR*/
-.ordenador {
+#ordenador {
     width: 15%;
     height: 70%;
     max-width: 150px;
@@ -113,28 +120,29 @@ footer {
     align-items: center;
 }
 
-/*ESTILO DE LOS BOTONES*/
-.luzEncendido{
+/*ESTILO DE LOS BOTONES Y LUCES PC*/
+#luzEncendido{
     background-color: mediumseagreen;
 }
-
-.luzApagado{
+#luzApagado{
     background-color: brown;
 }
-.btnEncendido{
+.luzON{
     box-shadow: inset 0 0 15px mediumseagreen, 0 0 10px rgb(91, 248, 104);
 }
-.btnApagado{
+.luzOFF{
     box-shadow: inset 0 0 15px brown, 0 0 10px rgb(204, 66, 66);
 }
-.btn{
+
+
+#btnON{
     border-radius: 10px;
     background-color: #d1d0d0;
     min-height: 25px;
     min-width: 10px;
 }
 
-.btn:hover{
+#btnON:hover{
     background-color: #333;
     color: #d1d0d0;
 }  

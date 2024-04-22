@@ -13,7 +13,9 @@
         <!--MARCO DE LA PANTALLA-->
         <div class="marco">
             <!-- PANTALLA -->
-            <div class="pantalla pantallaApagada"></div>
+            <div id="pantalla" class="pantallaApagada">
+                <span>ENCIENDE EL ORDENADOR</span>
+            </div>
                 
             <div class="marcoLogo"><!--CONTENEDOR PARA EL LOGO Y LA MARCA-->
                 <img id="logo" src="./images/iconos/corsair.png" alt="Buccaneer" />
@@ -22,15 +24,12 @@
         </div>
         
         <!--TORRE PC-->
-        <div class="ordenador">
+        <div id="ordenador">
             <!--LUCES DEL PCFAKE-->
-            <button class="luzEncendido"></button>
-            <button class="luzApagado btnApagado"></button>
+            <button id="luzEncendido" class=""></button>
+            <button id="luzApagado" class="luzOFF"></button>
             <!--BOTONES DE CONTROL DE JUEGO-->
-            <button class="btn">ENCENDER</button>
-            <button class="btn">CONFIGURACION</button>
-            <button class="btn">REINICIAR</button>
-
+            <button id="btnON"></button>
         </div>
 
     </div>
@@ -38,6 +37,7 @@
     <footer></footer>
 
     <script src="./js/main.js"></script>
+    <script src="./js/juego.js"></script>
 
 </body>
 </html>
