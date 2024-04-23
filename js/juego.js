@@ -13,6 +13,7 @@ class Juego{
         this.azul
         this.verde
         this.amarillo
+        this.controlComprobacion
         
         /*
         falta cargar sonidos cuando los tenga
@@ -26,9 +27,9 @@ class Juego{
         this.mostrarBotonesColores()
         //botonPlay.disabled=true
         botonPlay.style.opacity="0.4"
-        this.actualizarRonda()
+        //this.actualizarRonda()
         this.posSecuenciaJugador=0
-        this.secuencia = [0,2,1] 
+        this.secuencia = [0] 
         this.mostrarSecuencia()
         //this.activarClickJugador()//!DEBERIA LLAMAR A ESTA FUNCION SOLO CUANDO SEA TURNO DEL JUGADOR      
 
@@ -71,11 +72,14 @@ class Juego{
     actualizarRonda(){
         if(this.ronda===this.rondasTotales){
             //fin juego
+            console.log("HAS GANADO")
+        }else{
+            this.ronda++ 
+            this.secuencia.push(this.colorAleatorio())
+            this.velocidadBrillo=this.velocidadBrillo-(5*this.ronda)
+            this.mostrarSecuencia()
         }
-        this.ronda ++ 
-        this.secuencia.push(this.colorAleatorio())
-        this.velocidadBrillo=this.velocidadBrillo-(5*this.ronda)
-
+        
         //TODO actualizar texto de numero de ronda cuando lo tenga
     }
     
@@ -84,33 +88,45 @@ class Juego{
     }
 
     clickJugador(id){
-        console.log(id)
-        this.posSecuenciaJugador++
+        //console.log(id)
+        
+        this.arrSecuenciaJugador.push(Number(id))
 
-        //TODO Controlar que siga la secuencia
+        if(this.posSecuenciaJugador<this.secuencia.length){
+            
+            if(this.comprobarSecuencia()){
+                console.log("ACIERTO - SIGUE EL JUEGO")
+                this.posSecuenciaJugador++
+                console.log(this.posSecuenciaJugador)
 
-        //TODO aumentar la posicion de la secuencia del jugador
-
-        //TODO guardar la posicion actual en arrSecuenciaJugador
-
-        this.comprobarSecuencia(this.arrSecuenciaJugador)
+                if(this.posSecuenciaJugador===this.secuencia.length){
+                    console.log("PASAR DE RONDA")
+                    this.posSecuenciaJugador--
+                    this.actualizarRonda()
+                }
+            }
+        }
+        
+        
+         
     }
 
-    mostrarSecuencia(){//enseña la secuencia al jugador para que la copie
+    mostrarSecuencia(){
                  
         let secuenciaIndex=0
         let intervaloSecuencia=setInterval(()=>{
             this.bloqueoBotones=true//bloquear clicks del jugador
             if(secuenciaIndex<this.secuencia.length){
                 botonesColores[this.secuencia[secuenciaIndex]].classList.toggle("active")
+                
                 if(secuenciaIndex-1>=0){//toggle numero anterior si existe
                     botonesColores[this.secuencia[secuenciaIndex-1]].classList.toggle("active")
+                    
                 }
             }else{
                 botonesColores[this.secuencia[secuenciaIndex-1]].classList.toggle("active")//apaga el ultimo
                 this.bloqueoBotones=false//activamos los botones del jugador
                 this.activarClickJugador()
-                this.actualizarRonda()
                 clearInterval(intervaloSecuencia)
             }
             secuenciaIndex++
@@ -121,12 +137,15 @@ class Juego{
         this.bloqueoBotones=false
     } 
 
-    comprobarSecuencia(arr){//comprobar la secuencia del jugador
+    comprobarSecuencia(){//comprobar la secuencia del jugador
         //?SI LA SECUENCIA QUE SE ACABA DE MOSTRAR Y LA DEL JUGADOR SON IGUALES, RETURN TRUE
-
-        //actualizar ronda si todo va bien
-        //this.actualizarRonda(this.ronda+1)
-
+            if(this.secuencia[this.posSecuenciaJugador]===this.arrSecuenciaJugador[this.posSecuenciaJugador]){                    
+                this.controlComprobacion=true
+            }else{
+                console.log("RETORNO FALSE - FINAL DE JUEGO")
+                this.controlComprobacion=false
+            }
+        return this.controlComprobacion
     }
 
     activarClickJugador(){//añadimos el evento click a los botones

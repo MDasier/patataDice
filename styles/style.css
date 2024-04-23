@@ -115,6 +115,7 @@ footer {
     text-align: center;
     border: solid 2px;
     border-color: #333;
+    cursor: pointer;
 }
 .rojo{
     background-color: red;

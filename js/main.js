@@ -74,7 +74,7 @@ function encenderPantalla(){
     }
 }
 function empezarJuego(){
-    console.log("PATATA DICE")
+    console.log("PATATA DICE: START")
     juego = new Juego()
     juego.start()
     botonPlay.disabled=true
