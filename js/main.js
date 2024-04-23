@@ -13,9 +13,9 @@ let pantalla = document.querySelector("#pantalla")
 let btnON = document.querySelector("#btnON")
 let luzOn = document.querySelector("#luzEncendido")
 let luzOff = document.querySelector("#luzApagado")
+const coloresJuego = document.querySelector("#coloresJuego")
 const botonesColores = document.getElementsByClassName("BOTONES")
 
-//TODO CREAR BOTONES EN LA PANTALLA PARA CONTROLAR EL JUEGO
 
 //*CREAMOS BOTONES PARA CONTROLAR EL JUEGO
 const botonPlay = document.createElement("button");//botonplay
@@ -57,6 +57,7 @@ function encenderPantalla(){
         botonPlay.remove()
         botonPause.remove() 
         botonConfig.remove() 
+        juego.esconderBotones()
         
     }else{//EN CASO DE QUERER CONTROLAR EL ENCENDIDO Y APAGADO
         pantallaOn=true
@@ -76,5 +77,5 @@ function empezarJuego(){
     console.log("PATATA DICE")
     juego = new Juego(botonesColores)
     juego.start()
-    console.log(botonesColores)
+    //console.log(botonesColores)
 }
