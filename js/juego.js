@@ -99,6 +99,8 @@ class Juego{
                     this.actualizarRonda()
                 }
                 
+            }else{
+                console.log("fin juego")
             }
         }    
          

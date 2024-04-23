@@ -119,22 +119,22 @@ footer {
 }
 .rojo{
     background-color: red;
-    filter: brightness(50%);
+    filter: brightness(80%);
 }
 .azul{
     background-color: blue;
-    filter: brightness(50%);
+    filter: brightness(80%);
 }
 .verde{
     background-color: green;
-    filter: brightness(50%);
+    filter: brightness(80%);
 }
 .amarillo{
     background-color: yellow;
-    filter: brightness(50%);
+    filter: brightness(80%);
 }
 .active{
-    filter: brightness(150%);
+    filter: brightness(200%);
 }
 
 /*ESTILOS PARA EL ORDENADOR*/
