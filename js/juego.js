@@ -1,3 +1,6 @@
+//TODO Controlar mejor la iluminacion de la secuencia. Si se repite color no se nota el corte, solo se ilumina más tiempo
+//TODO añadir sonidos
+
 class Juego{
 
     constructor(){
@@ -29,9 +32,9 @@ class Juego{
         botonPlay.style.opacity="0.4"
         //this.actualizarRonda()
         this.posSecuenciaJugador=0
-        this.secuencia = [0,1] 
+        this.secuencia = [this.colorAleatorio()] 
         this.mostrarSecuencia()
-        this.activarClickJugador()//!DEBERIA LLAMAR A ESTA FUNCION SOLO CUANDO SEA TURNO DEL JUGADOR      
+        this.activarClickJugador()
 
     }
 
@@ -88,21 +91,21 @@ class Juego{
     }
 
     clickJugador(id){
-        //console.log(id)
         
         this.arrSecuenciaJugador.push(Number(id))
         this.posSecuenciaJugador++
+
         for(let c=0;c<this.secuencia.length;c++){
             if(this.secuencia[c]===this.arrSecuenciaJugador[c]){
+
                 if(this.posSecuenciaJugador===this.secuencia.length){
                     console.log("ACTUALIZAR RONDA")
                     this.actualizarRonda()
                 }
                 
-            }else{
-                console.log("fin juego")
             }
-        }    
+        }
+            
          
     }
 
@@ -112,7 +115,7 @@ class Juego{
         this.bloqueoBotones=true//bloquear clicks del jugador
         
         this.intervaloSecuencia=setInterval(()=>{        
-
+            
             if(secuenciaIndex<this.secuencia.length){
 
                 botonesColores[this.secuencia[secuenciaIndex]].classList.toggle("active")
@@ -132,7 +135,6 @@ class Juego{
                 clearInterval(this.intervaloSecuencia)
                 this.intervaloSecuencia=null
             }
-
             secuenciaIndex++
 
         },this.velocidadBrillo)
