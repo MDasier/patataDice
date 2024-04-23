@@ -68,14 +68,15 @@ function encenderPantalla(){
         pantalla.appendChild(botonPlay)//añadimos el boton al DOM
         pantalla.appendChild(botonPause)//añadimos el boton al DOM
         pantalla.appendChild(botonConfig)//añadimos el boton al DOM
-        
+        botonPlay.disabled=false
         //bntON.disabled = true //deshabilita la funcion de "apagado"
         //bntON.className="disabled" //estilo del cursor para botones deshabilitados
     }
 }
 function empezarJuego(){
     console.log("PATATA DICE")
-    juego = new Juego(botonesColores)
+    juego = new Juego()
     juego.start()
+    botonPlay.disabled=true
     //console.log(botonesColores)
 }
