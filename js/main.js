@@ -9,22 +9,25 @@ let juego=null;
 let pantallaOn = false;
 
 //*ELEMENTOS DEL DOM
-let pantalla = document.querySelector("#pantalla")
-let btnON = document.querySelector("#btnON")
-let luzOn = document.querySelector("#luzEncendido")
-let luzOff = document.querySelector("#luzApagado")
+const pantalla = document.querySelector("#pantalla")
+const btnON = document.querySelector("#btnON")
+const luzOn = document.querySelector("#luzEncendido")
+const luzOff = document.querySelector("#luzApagado")
 const coloresJuego = document.querySelector("#coloresJuego")
 const botonesColores = document.getElementsByClassName("BOTONES")
+const textoRonda = document.createElement("p")
 
 
 //*CREAMOS BOTONES PARA CONTROLAR EL JUEGO
 const botonPlay = document.createElement("button");//botonplay
 const botonPause = document.createElement("button");//botonPause
 const botonConfig = document.createElement("button");//botonConfig
+
 //*CREAMOS LAS IMAGENES PARA LOS BOTONES
 const imgPlay = document.createElement("img")//imagen del boton
 const imgPause = document.createElement("img")//imagen del boton
 const imgConfig = document.createElement("img")//imagen del boton
+
 //*AÑADIMOS ESTILOS
 botonPlay.className="btnControl"//clase para el boton
 imgPlay.className="play"//clase para la imagen
@@ -48,7 +51,7 @@ botonConfig.addEventListener("click", ()=>{
 
 //*FUNCIONES
 function encenderPantalla(){
-    if(pantallaOn){
+    if(pantallaOn){//SI LA PANTALLA ESTA ENCENDIDA --> APAGAR
         pantallaOn=false
         pantalla.classList.toggle("encenderPantalla")
         pantalla.classList.toggle("pantallaApagada")
@@ -59,7 +62,7 @@ function encenderPantalla(){
         botonConfig.remove() 
         juego.esconderBotones()
         
-    }else{//EN CASO DE QUERER CONTROLAR EL ENCENDIDO Y APAGADO
+    }else{//SI LA PANTALLA ESTA APAGADA --> ENCENDER
         pantallaOn=true
         pantalla.classList.toggle("encenderPantalla")
         pantalla.classList.toggle("pantallaApagada")
@@ -69,6 +72,8 @@ function encenderPantalla(){
         pantalla.appendChild(botonPause)//añadimos el boton al DOM
         pantalla.appendChild(botonConfig)//añadimos el boton al DOM
         botonPlay.disabled=false
+        pantalla.append(textoRonda)
+        textoRonda.innerText = `RONDA: 0`
         //bntON.disabled = true //deshabilita la funcion de "apagado"
         //bntON.className="disabled" //estilo del cursor para botones deshabilitados
     }
@@ -78,5 +83,4 @@ function empezarJuego(){
     juego = new Juego()
     juego.start()
     botonPlay.disabled=true
-    //console.log(botonesColores)
 }

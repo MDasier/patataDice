@@ -1,5 +1,5 @@
 //TODO Controlar mejor la iluminacion de la secuencia. Si se repite color no se nota el corte, solo se ilumina más tiempo
-//TODO añadir sonidos
+
 
 class Juego{
 
@@ -30,12 +30,10 @@ class Juego{
 
     //*METODOS 
     start(){
-        //TODO Intervalo de juego
-        //TODO Mostrar los botones de juego
+
         this.mostrarBotonesColores()
         //botonPlay.disabled=true
         botonPlay.style.opacity="0.4"
-        //this.actualizarRonda()
         this.posSecuenciaJugador=0
         this.secuencia = [this.colorAleatorio()] 
         this.mostrarSecuencia()
@@ -80,39 +78,53 @@ class Juego{
     actualizarRonda(){
         if(this.ronda===this.rondasTotales){
             this.sonidos[4].play()
-            console.log("HAS GANADO")
+            //window.alert("HAS GANADO")
+            pantalla.innerText="HAS GANADO"
         }else{
             this.ronda++ 
             this.secuencia.push(this.colorAleatorio())
             this.velocidadBrillo=this.velocidadBrillo-50
+            this.arrSecuenciaJugador=[]
             this.mostrarSecuencia()
         }
         
-        //TODO actualizar texto de numero de ronda cuando lo tenga
+
     }
     
     colorAleatorio(){
         return Math.floor(Math.random()*4)
     }
 
+    gameOver(){
+        //window.alert('GAME OVER')
+        //this.sonidos[4].play()
+        pantalla.innerText="GAME OVER"
+
+    }
+
     clickJugador(id){
         this.sonidos[Number(id)].play()
         this.arrSecuenciaJugador.push(Number(id))
-        this.posSecuenciaJugador++
+        console.log("RONDA: "+this.ronda)
+        console.log(this.secuencia)
+        console.log(this.arrSecuenciaJugador)
 
-        for(let c=0;c<this.secuencia.length;c++){
-            if(this.secuencia[c]===this.arrSecuenciaJugador[c]){
+        
+                if(this.secuencia[this.posSecuenciaJugador]===this.arrSecuenciaJugador[this.posSecuenciaJugador]){
 
-                if(this.posSecuenciaJugador===this.secuencia.length){
-                    console.log("ACTUALIZAR RONDA")
-                    this.actualizarRonda()
+                    this.posSecuenciaJugador++
+
+                    if(this.posSecuenciaJugador === this.secuencia.length){
+                        console.log("ACTUALIZAR RONDA")
+                        this.actualizarRonda()
+                    }
+                    
+                }else{
+                    this.gameOver()
                 }
-                
-            }
-        }
-            
-         
-    }
+        
+       
+    }//CONTROL EN CADA CLICK DEL JUGADOR QUE "LA PATATA" SEA CORRECTA
 
     mostrarSecuencia(){
                  
@@ -123,11 +135,16 @@ class Juego{
             
             if(secuenciaIndex<this.secuencia.length){
 
-                botonesColores[this.secuencia[secuenciaIndex]].classList.toggle("active")
-                this.sonidos[this.secuencia[secuenciaIndex]].play()
                 if(secuenciaIndex>0){//toggle numero anterior si existe
                     botonesColores[this.secuencia[secuenciaIndex-1]].classList.toggle("active")
                 }
+                let secuenciaTemporal=this.secuencia
+                setTimeout(()=>{
+                    botonesColores[secuenciaTemporal[secuenciaIndex]].classList.toggle("active")
+                    this.sonidos[secuenciaTemporal[secuenciaIndex]].play()
+                    secuenciaIndex++
+                },100)
+                                
 
             }else if(secuenciaIndex===this.secuencia.length){
 
@@ -135,18 +152,18 @@ class Juego{
 
                 this.bloqueoBotones=false//activamos los botones del jugador
 
-                //this.activarClickJugador()
+                textoRonda.innerText=`RONDA: ${this.ronda}`
                 this.posSecuenciaJugador=0
                 clearInterval(this.intervaloSecuencia)
                 this.intervaloSecuencia=null
             }
-            secuenciaIndex++
+            
 
         },this.velocidadBrillo)
         
     } 
 
-    activarClickJugador(){//añadimos el evento click a los botones
+    activarClickJugador(){
         if(this.bloqueoBotones){
             for(let i=0;i<botonesColores.length;i++){
                 botonesColores[i].addEventListener("mousedown",()=>{
@@ -159,5 +176,4 @@ class Juego{
             }
         }        
     }
- 
 }
