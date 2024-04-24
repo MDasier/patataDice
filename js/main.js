@@ -14,7 +14,7 @@ const btnON = document.querySelector("#btnON")
 const luzOn = document.querySelector("#luzEncendido")
 const luzOff = document.querySelector("#luzApagado")
 const coloresJuego = document.querySelector("#coloresJuego")
-const botonesColores = document.getElementsByClassName("BOTONES")
+const botonesJugador = document.getElementsByClassName("botonesJugador")
 const textoRonda = document.createElement("p")
 
 

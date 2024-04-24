@@ -101,39 +101,63 @@ footer {
 }
 
 #coloresJuego{
-    width: 60%;
-    height: 70%;
-    position: absolute;
-    top: 50px;
-    left: 100px;
-    justify-content:start;
-    display:grid;
-    grid-template-columns: 1fr 1fr;
+    width: 85%;
+    height: 95%;
+    position: relative;
+    left: -40px;
+    top:20px;
+    justify-content:flex-start;
+    /*display:grid;
+    grid-template-columns: 1fr 1fr;*/
     /*grid-template-rows: 1fr 1fr;*/
 }
-.BOTONES{
+.botonesJugador{
     text-align: center;
     border: solid 2px;
     border-color: #333;
     cursor: pointer;
+    width: 40px;
+    height: 40px;
 }
-.rojo{
-    background-color: red;
+.patata0{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-image: url("../images/VeryHotPatata/patata1.jpeg");
+    background-size: cover;
+    /*background-color: red;*/
     filter: brightness(40%);
 }
-.azul{
-    background-color: blue;
+.patata1{
+    position: absolute;
+    top: 10px;
+    left: 70%;
+    background-image: url("../images/VeryHotPatata/patata1.jpeg");
+    background-size: cover;
+    /*background-color: blue;*/
     filter: brightness(40%);
 }
-.verde{
-    background-color: green;
+.patata2{
+    position: absolute;
+    top: 70%;
+    left: 5px;
+    background-image: url("../images/VeryHotPatata/patata1.jpeg");
+    background-size: cover;
+   /* background-color: green;*/
     filter: brightness(40%);
 }
-.amarillo{
-    background-color: yellow;
+.patata3{
+    position: absolute;
+    top: 70%;
+    left: 60%;
+    background-image: url("../images/VeryHotPatata/patata1.jpeg");
+    background-size: cover;
+    /*background-color: yellow;*/
     filter: brightness(40%);
 }
 .active{
+    background-image: url("../images/VeryHotPatata/patata2.jpeg");
+    background-size: cover;
     filter: brightness(150%);
 }
 
