@@ -18,46 +18,47 @@ const textoRonda = document.createElement("p")
 
 
 //*CREAMOS BOTONES PARA CONTROLAR EL JUEGO
-const botonPlay = document.createElement("button");//botonplay
-const botonPause = document.createElement("button");//botonPause
-const botonConfig = document.createElement("button");//botonConfig
+const botonPlay = document.createElement("button");
+const botonVolumen = document.createElement("button");
+const botonConfig = document.createElement("button");
 
 //*CREAMOS LAS IMAGENES PARA LOS BOTONES
-const imgPlay = document.createElement("img")//imagen del boton
-const imgPause = document.createElement("img")//imagen del boton
-const imgConfig = document.createElement("img")//imagen del boton
+const imgPlay = document.createElement("img")
+const imgVolumen = document.createElement("img")
+const imgConfig = document.createElement("img")
 
 //*AÑADIMOS ESTILOS
 botonPlay.className="btnControl"//clase para el boton
 imgPlay.className="play"//clase para la imagen
-botonPause.className="btnControl"//clase para el boton
-imgPause.className="pause"//clase para la imagen
-botonConfig.className="btnControl"//clase para el boton
-imgConfig.className="ajustes"//clase para la imagen
+botonVolumen.className="btnControl"
+imgVolumen.className="volumen"
+botonConfig.className="btnControl"
+imgConfig.className="ajustes"
 
-//?INSERTAMOS LOS BOTONES EN EL DOM
+//*INSERTAMOS LOS BOTONES EN EL DOM
 botonPlay.appendChild(imgPlay)//añadimos la imagen al boton
-botonPause.appendChild(imgPause)//añadimos la imagen al boton
-botonConfig.appendChild(imgConfig)//añadimos la imagen al boton    
+botonVolumen.appendChild(imgVolumen)
+botonConfig.appendChild(imgConfig) 
 
 
 //*EVENTLISTENERS
 btnON.addEventListener("click", encenderPantalla)
-botonPlay.addEventListener("click", empezarJuego)//CON LA PANTALLA ENCENDIDA Y CLICANDO EN BOTONPLAY
+botonPlay.addEventListener("click", empezarJuego)
 botonConfig.addEventListener("click", ()=>{
-    console.log("BOTON CONFIGURACION")
-})//CON LA PANTALLA ENCENDIDA Y CLICANDO EN BOTONPLAY
+    //console.log("BOTON CONFIGURACION")
+})
 
 //*FUNCIONES
 function encenderPantalla(){
     if(pantallaOn){//SI LA PANTALLA ESTA ENCENDIDA --> APAGAR
         pantallaOn=false
+        textoRonda.innerText = ""
         pantalla.classList.toggle("encenderPantalla")
         pantalla.classList.toggle("pantallaApagada")
         luzOn.classList.toggle("luzON")
         luzOff.classList.toggle("luzOFF")
         botonPlay.remove()
-        botonPause.remove() 
+        botonVolumen.remove() 
         botonConfig.remove() 
         juego.esconderBotones()
         
@@ -68,7 +69,7 @@ function encenderPantalla(){
         luzOn.classList.toggle("luzON")
         luzOff.classList.toggle("luzOFF")
         pantalla.appendChild(botonPlay)//añadimos el boton al DOM
-        pantalla.appendChild(botonPause)//añadimos el boton al DOM
+        pantalla.appendChild(botonVolumen)//añadimos el boton al DOM
         pantalla.appendChild(botonConfig)//añadimos el boton al DOM
         botonPlay.disabled=false
         pantalla.append(textoRonda)
@@ -83,4 +84,5 @@ function empezarJuego(){
     juego.start()
     botonPlay.disabled=true
     textoRonda.innerText = `RONDA: 0`
+    
 }

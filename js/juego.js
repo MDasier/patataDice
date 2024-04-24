@@ -26,6 +26,7 @@ class Juego{
     }
 
     //*METODOS 
+    
     start(){
 
         this.mostrarBotonesColores()
@@ -35,7 +36,14 @@ class Juego{
         this.secuencia = [this.colorAleatorio()] 
         this.mostrarSecuencia()
         this.activarClickJugador()
-
+        botonVolumen.addEventListener("click", ()=>{this.sonidos.forEach((elem)=>{
+                if(elem.muted){
+                    elem.muted=false
+                }else{
+                    elem.muted=true
+                }
+            })
+        })
     }
 
     esconderBotones(){
@@ -106,9 +114,9 @@ class Juego{
     clickJugador(id){
         this.sonidos[Number(id)].play()
         this.arrSecuenciaJugador.push(Number(id))
-        console.log("RONDA: "+this.ronda)
+        /*console.log("RONDA: "+this.ronda)
         console.log(this.secuencia)
-        console.log(this.arrSecuenciaJugador)
+        console.log(this.arrSecuenciaJugador)*/
 
         
                 if(this.secuencia[this.posSecuenciaJugador]===this.arrSecuenciaJugador[this.posSecuenciaJugador]){
@@ -116,7 +124,7 @@ class Juego{
                     this.posSecuenciaJugador++
 
                     if(this.posSecuenciaJugador === this.secuencia.length){
-                        console.log("ACTUALIZAR RONDA")
+                        //console.log("ACTUALIZAR RONDA")
                         this.actualizarRonda()
                     }
                     

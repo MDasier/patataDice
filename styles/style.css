@@ -227,9 +227,9 @@ footer {
     height: 25px;
     width: 25px;
 }
-.pause{
+.volumen{
     border: none;
-    background-image: url("../images/iconos/pausa.png");
+    background-image: url("../images/iconos/volumen.png");
     background-size: cover;
     height: 25px;
     width: 25px;
