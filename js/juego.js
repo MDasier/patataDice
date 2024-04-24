@@ -8,7 +8,7 @@ class Juego{
         this.ronda = 0
         this.posSecuenciaJugador = 0
         this.arrSecuenciaJugador=[]
-        this.rondasTotales = 9
+        this.rondasTotales = 4
         this.secuencia = []
         this.velocidadBrillo = 1000
         this.bloqueoBotones = true
@@ -18,9 +18,14 @@ class Juego{
         this.amarillo
         this.intervaloSecuencia=null
         
-        /*
-        falta cargar sonidos cuando los tenga
-        */
+        //*SONIDOS DE LOS BOTONES Y DE 'GANAR'
+        this.sonidos= [
+                        new Audio("../sonidos/1.wav"),
+                        new Audio("../sonidos/2.wav"),
+                        new Audio("../sonidos/3.wav"),
+                        new Audio("../sonidos/4.wav"),
+                        new Audio("../sonidos/win.wav")
+                    ]
     }
 
     //*METODOS 
@@ -74,12 +79,12 @@ class Juego{
 
     actualizarRonda(){
         if(this.ronda===this.rondasTotales){
-            //fin juego
+            this.sonidos[4].play()
             console.log("HAS GANADO")
         }else{
             this.ronda++ 
             this.secuencia.push(this.colorAleatorio())
-            //this.velocidadBrillo=this.velocidadBrillo-(5*this.ronda)
+            this.velocidadBrillo=this.velocidadBrillo-50
             this.mostrarSecuencia()
         }
         
@@ -91,7 +96,7 @@ class Juego{
     }
 
     clickJugador(id){
-        
+        this.sonidos[Number(id)].play()
         this.arrSecuenciaJugador.push(Number(id))
         this.posSecuenciaJugador++
 
@@ -119,7 +124,7 @@ class Juego{
             if(secuenciaIndex<this.secuencia.length){
 
                 botonesColores[this.secuencia[secuenciaIndex]].classList.toggle("active")
-                
+                this.sonidos[this.secuencia[secuenciaIndex]].play()
                 if(secuenciaIndex>0){//toggle numero anterior si existe
                     botonesColores[this.secuencia[secuenciaIndex-1]].classList.toggle("active")
                 }
@@ -142,7 +147,7 @@ class Juego{
     } 
 
     activarClickJugador(){//añadimos el evento click a los botones
-        //if(!this.bloqueoBotones){
+        if(this.bloqueoBotones){
             for(let i=0;i<botonesColores.length;i++){
                 botonesColores[i].addEventListener("mousedown",()=>{
                     botonesColores[i].classList.toggle("active")
@@ -152,7 +157,7 @@ class Juego{
                     botonesColores[i].classList.toggle("active")
                 })
             }
-        //}        
+        }        
     }
  
 }
