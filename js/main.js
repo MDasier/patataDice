@@ -1,7 +1,6 @@
-
-    
-    //TODO Conseguir sonidos para las acciones, menús y música de fondo del juego
-    //! SI TODO VA BIEN --> control responsividad (controlar el tamaño/forma de pantalla)
+  
+    //! SI TODO VA BIEN -->
+        //TODO control responsividad (controlar el tamaño/forma de pantalla)
 
 
 //*VARIABLES SCOPE GLOBAL
@@ -73,14 +72,15 @@ function encenderPantalla(){
         pantalla.appendChild(botonConfig)//añadimos el boton al DOM
         botonPlay.disabled=false
         pantalla.append(textoRonda)
-        textoRonda.innerText = `RONDA: 0`
+        textoRonda.innerText = `Pulsa el boton 'PLAY' para empezar a jugar`
         //bntON.disabled = true //deshabilita la funcion de "apagado"
         //bntON.className="disabled" //estilo del cursor para botones deshabilitados
     }
 }
 function empezarJuego(){
-    console.log("PATATA DICE: START")
+    //console.log("PATATA DICE: START")
     juego = new Juego()
     juego.start()
     botonPlay.disabled=true
+    textoRonda.innerText = `RONDA: 0`
 }

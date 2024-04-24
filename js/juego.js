@@ -1,6 +1,3 @@
-//TODO Controlar mejor la iluminacion de la secuencia. Si se repite color no se nota el corte, solo se ilumina más tiempo
-
-
 class Juego{
 
     constructor(){
@@ -20,11 +17,11 @@ class Juego{
         
         //*SONIDOS DE LOS BOTONES Y DE 'GANAR'
         this.sonidos= [
-                        new Audio("../sonidos/1.wav"),
-                        new Audio("../sonidos/2.wav"),
-                        new Audio("../sonidos/3.wav"),
-                        new Audio("../sonidos/4.wav"),
-                        new Audio("../sonidos/win.wav")
+                        new Audio("./sonidos/1.wav"),
+                        new Audio("./sonidos/2.wav"),
+                        new Audio("./sonidos/3.wav"),
+                        new Audio("./sonidos/4.wav"),
+                        new Audio("./sonidos/win.wav")
                     ]
     }
 
@@ -141,10 +138,10 @@ class Juego{
 
                 if(secuenciaIndex>0){//toggle numero anterior si existe
                     botonesJugador[this.secuencia[secuenciaIndex-1]].classList.toggle("active")
-                    botonesJugador[0].style.display="none"
+                    botonesJugador[this.secuencia[secuenciaIndex-1]].style.display="none"/*
                     botonesJugador[1].style.display="none"
                     botonesJugador[2].style.display="none"
-                    botonesJugador[3].style.display="none"
+                    botonesJugador[3].style.display="none"*/
                     
                 }else{
                     botonesJugador[0].style.display="none"
