@@ -168,7 +168,7 @@ class Juego{
             }           
             
             this.secuencia.push(this.colorAleatorio())
-            this.velocidadBrillo=this.velocidadBrillo-50
+            this.velocidadBrillo=this.velocidadBrillo-100
             this.arrSecuenciaJugador=[]
             this.mostrarSecuencia()
         }
