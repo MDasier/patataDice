@@ -102,7 +102,7 @@ footer {
 
 #coloresJuego{
     width: 85%;
-    height: 95%;
+    height: 100%;
     position: relative;
     left: -40px;
     top:20px;
@@ -111,6 +111,7 @@ footer {
     grid-template-columns: 1fr 1fr;*/
     /*grid-template-rows: 1fr 1fr;*/
 }
+
 .botonesJugador{
     text-align: center;
     border: none;
@@ -118,10 +119,11 @@ footer {
     width: 40px;
     height: 40px;
 }
+
 .patata0{
     position: absolute;
-    top: 0px;
-    left: 0px;
+    top: 1%;
+    left: 1%;
     background-image: url("../images/VeryHotPatata/patata1.jpeg");
     background-size: cover;
     /*background-color: red;*/
@@ -129,8 +131,8 @@ footer {
 }
 .patata1{
     position: absolute;
-    top: 10px;
-    left: 70%;
+    top: 1%;
+    left: 25%;
     background-image: url("../images/VeryHotPatata/patata1.jpeg");
     background-size: cover;
     /*background-color: blue;*/
@@ -138,8 +140,8 @@ footer {
 }
 .patata2{
     position: absolute;
-    top: 70%;
-    left: 5px;
+    top: 1%;
+    left: 50%;
     background-image: url("../images/VeryHotPatata/patata1.jpeg");
     background-size: cover;
    /* background-color: green;*/
@@ -147,13 +149,51 @@ footer {
 }
 .patata3{
     position: absolute;
-    top: 70%;
-    left: 60%;
+    top: 1%;
+    left: 75%;
     background-image: url("../images/VeryHotPatata/patata1.jpeg");
     background-size: cover;
     /*background-color: yellow;*/
     filter: brightness(40%);
 }
+.patata4{
+    position: absolute;
+    top: 50%;
+    left: 1%;
+    background-image: url("../images/VeryHotPatata/patata1.jpeg");
+    background-size: cover;
+    /*background-color: red;*/
+    filter: brightness(40%);
+}
+.patata5{
+    position: absolute;
+    top: 50%;
+    left: 25%;
+    background-image: url("../images/VeryHotPatata/patata1.jpeg");
+    background-size: cover;
+    /*background-color: blue;*/
+    filter: brightness(40%);
+}
+.patata6{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background-image: url("../images/VeryHotPatata/patata1.jpeg");
+    background-size: cover;
+   /* background-color: green;*/
+    filter: brightness(40%);
+}
+.patata7{
+    position: absolute;
+    top: 50%;
+    left: 75%;
+    background-image: url("../images/VeryHotPatata/patata1.jpeg");
+    background-size: cover;
+    /*background-color: yellow;*/
+    filter: brightness(40%);
+}
+
+
 .active{
     background-image: url("../images/VeryHotPatata/patata2.jpeg");
     background-size: cover;
@@ -194,14 +234,16 @@ footer {
 
 
 #btnON{
+    background-image: url("../images/iconos/energia.png");
+    background-size: cover;
     border-radius: 10px;
-    background-color: #d1d0d0;
-    min-height: 25px;
-    min-width: 10px;
+    background-color: #333;
+    min-height: 30px;
+    min-width: 30px;
 }
 
 #btnON:hover{
-    background-color: #333;
+    background-color: transparent;
     color: #d1d0d0;
 }
 .disabled{

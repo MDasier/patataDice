@@ -13,8 +13,11 @@ class Juego{
         this.patata1
         this.patata2
         this.patata3
+        this.patata4
+        this.patata5
+        this.patata6
+        this.patata7
         this.intervaloSecuencia=null
-        
         //*SONIDOS DE LOS BOTONES Y DE 'GANAR'
         this.sonidos= [
                         new Audio("./sonidos/1.wav"),
@@ -28,7 +31,6 @@ class Juego{
     //*METODOS 
     
     start(){
-
         this.mostrarBotonesColores()
         //botonPlay.disabled=true
         botonPlay.style.opacity="0.4"
@@ -47,32 +49,53 @@ class Juego{
     }
 
     esconderBotones(){
+        
         this.patata0.remove()
         this.patata1.remove()
         this.patata2.remove()
         this.patata3.remove()
+        
     }
 
     mostrarBotonesColores(){
+        //?POSICIONES 'ALEATORIAS' PARA LAS PATATAS
+        let top1 = Math.floor(Math.random()*21)
+        let top2 = top1 + 50
+        let top3 = Math.floor(Math.random()*21) + 110
+        let top4 = top3 + 50
+        let left1 = Math.floor(Math.random()*7) + 10
+        let left2 = Math.floor(Math.random()*12) + 116
+        let left3 = Math.floor(Math.random()*70) + 212
+        let left4 = left3 + 50
+
+        //4 PATATAS DE INICIO
         this.patata0 = document.createElement("button")
         this.patata0.classList.add("botonesJugador")
         this.patata0.classList.add("patata0")
         this.patata0.id = "0"
+        this.patata0.style.top = `${top1}px`
+        this.patata0.style.left = `${left1}px`
 
         this.patata1 = document.createElement("button")
         this.patata1.classList.add("botonesJugador")
         this.patata1.classList.add("patata1")
         this.patata1.id = "1"
+        this.patata1.style.top = `${top2}px`
+        this.patata1.style.left = `${left2}px`
 
         this.patata2 = document.createElement("button")
         this.patata2.classList.add("botonesJugador")
         this.patata2.classList.add("patata2")
         this.patata2.id = "2"
+        this.patata2.style.top = `${top1}px`
+        this.patata2.style.left = `${left3}px`
 
         this.patata3 = document.createElement("button")
         this.patata3.classList.add("botonesJugador")
         this.patata3.classList.add("patata3")
         this.patata3.id = "3"
+        this.patata3.style.top = `${top2}px`
+        this.patata3.style.left = `${left4}px`
 
         coloresJuego.appendChild(this.patata0)
         this.patata0.style.display="none"
@@ -82,6 +105,44 @@ class Juego{
         this.patata2.style.display="none"
         coloresJuego.appendChild(this.patata3)
         this.patata3.style.display="none"
+
+        //4 PATATAS MÁS SI SE QUIERE
+        this.patata4 = document.createElement("button")
+        this.patata4.classList.add("botonesJugador")
+        this.patata4.classList.add("patata4")
+        this.patata4.id = "4"
+        this.patata4.style.top = `${top4}px`
+        this.patata4.style.left = `${left1}px`
+
+        this.patata5 = document.createElement("button")
+        this.patata5.classList.add("botonesJugador")
+        this.patata5.classList.add("patata5")
+        this.patata5.id = "5"
+        this.patata5.style.top = `${top3}px`
+        this.patata5.style.left = `${left2}px`
+
+        this.patata6 = document.createElement("button")
+        this.patata6.classList.add("botonesJugador")
+        this.patata6.classList.add("patata6")
+        this.patata6.id = "6"
+        this.patata6.style.top = `${top3}px`
+        this.patata6.style.left = `${left3}px`
+
+        this.patata7 = document.createElement("button")
+        this.patata7.classList.add("botonesJugador")
+        this.patata7.classList.add("patata7")
+        this.patata7.id = "7"
+        this.patata7.style.top = `${top4}px`
+        this.patata7.style.left = `${left4}px`
+
+        coloresJuego.appendChild(this.patata4)
+        this.patata4.style.display="none"
+        coloresJuego.appendChild(this.patata5)
+        this.patata5.style.display="none"
+        coloresJuego.appendChild(this.patata6)
+        this.patata6.style.display="none"
+        coloresJuego.appendChild(this.patata7)
+        this.patata7.style.display="none"
     }
 
     actualizarRonda(){
@@ -101,7 +162,7 @@ class Juego{
     }
     
     colorAleatorio(){
-        return Math.floor(Math.random()*4)
+        return Math.floor(Math.random()*8)
     }
 
     gameOver(){
@@ -112,25 +173,27 @@ class Juego{
     }
 
     clickJugador(id){
-        this.sonidos[Number(id)].play()
+        if(Number(id)>=0 && (Number(id)<=3)){
+            this.sonidos[Number(id)].play()
+        }else{
+            this.sonidos[(Number(id))-4].play()
+        }
+        
         this.arrSecuenciaJugador.push(Number(id))
-        /*console.log("RONDA: "+this.ronda)
-        console.log(this.secuencia)
-        console.log(this.arrSecuenciaJugador)*/
 
         
-                if(this.secuencia[this.posSecuenciaJugador]===this.arrSecuenciaJugador[this.posSecuenciaJugador]){
+        if(this.secuencia[this.posSecuenciaJugador]===this.arrSecuenciaJugador[this.posSecuenciaJugador]){
 
-                    this.posSecuenciaJugador++
+            this.posSecuenciaJugador++
 
-                    if(this.posSecuenciaJugador === this.secuencia.length){
-                        //console.log("ACTUALIZAR RONDA")
-                        this.actualizarRonda()
-                    }
-                    
-                }else{
-                    this.gameOver()
+                if(this.posSecuenciaJugador === this.secuencia.length){
+                    //console.log("ACTUALIZAR RONDA")
+                    this.actualizarRonda()
                 }
+                    
+        }else{
+            this.gameOver()
+        }
         
        
     }//CONTROL EN CADA CLICK DEL JUGADOR QUE "LA PATATA" SEA CORRECTA
@@ -140,22 +203,22 @@ class Juego{
         let secuenciaIndex=0
         this.bloqueoBotones=true//bloquear clicks del jugador
         
-        this.intervaloSecuencia=setInterval(()=>{        
-            
+        this.intervaloSecuencia=setInterval(()=>{    
             if(secuenciaIndex<this.secuencia.length){
 
-                if(secuenciaIndex>0){//toggle numero anterior si existe
+                if(secuenciaIndex>0){//toggle numero anterior 'si existe'
                     botonesJugador[this.secuencia[secuenciaIndex-1]].classList.toggle("active")
-                    botonesJugador[this.secuencia[secuenciaIndex-1]].style.display="none"/*
-                    botonesJugador[1].style.display="none"
-                    botonesJugador[2].style.display="none"
-                    botonesJugador[3].style.display="none"*/
+                    botonesJugador[this.secuencia[secuenciaIndex-1]].style.display="none"
                     
                 }else{
                     botonesJugador[0].style.display="none"
                     botonesJugador[1].style.display="none"
                     botonesJugador[2].style.display="none"
                     botonesJugador[3].style.display="none"
+                    botonesJugador[4].style.display="none"
+                    botonesJugador[5].style.display="none"
+                    botonesJugador[6].style.display="none"
+                    botonesJugador[7].style.display="none"
                 }
 
                 let secuenciaTemporal=this.secuencia
@@ -163,7 +226,12 @@ class Juego{
 
                     botonesJugador[secuenciaTemporal[secuenciaIndex]].classList.toggle("active")
                     botonesJugador[this.secuencia[secuenciaIndex]].style.display="block"
-                    this.sonidos[secuenciaTemporal[secuenciaIndex]].play()
+                    if(secuenciaTemporal[secuenciaIndex]>=0 && (secuenciaTemporal[secuenciaIndex]<=3)){
+                        this.sonidos[secuenciaTemporal[secuenciaIndex]].play()
+                    }else{
+                        this.sonidos[(secuenciaTemporal[secuenciaIndex])-4].play()
+                    }
+                    //this.sonidos[secuenciaTemporal[secuenciaIndex]].play()
                     secuenciaIndex++
 
                 },100)
@@ -177,10 +245,16 @@ class Juego{
 
                 textoRonda.innerText=`RONDA: ${this.ronda}`
                 this.posSecuenciaJugador=0
+
                 botonesJugador[0].style.display="block"
                 botonesJugador[1].style.display="block"
                 botonesJugador[2].style.display="block"
                 botonesJugador[3].style.display="block"
+                botonesJugador[4].style.display="block"
+                botonesJugador[5].style.display="block"
+                botonesJugador[6].style.display="block"
+                botonesJugador[7].style.display="block"
+
                 clearInterval(this.intervaloSecuencia)
                 this.intervaloSecuencia=null
             }

@@ -6,6 +6,7 @@
 //*VARIABLES SCOPE GLOBAL
 let juego=null;
 let pantallaOn = false;
+let controlEncendido=0
 
 //*ELEMENTOS DEL DOM
 const pantalla = document.querySelector("#pantalla")
@@ -50,6 +51,7 @@ botonConfig.addEventListener("click", ()=>{
 
 //*FUNCIONES
 function encenderPantalla(){
+    
     if(pantallaOn){//SI LA PANTALLA ESTA ENCENDIDA --> APAGAR
         pantallaOn=false
         textoRonda.innerText = ""
@@ -60,7 +62,11 @@ function encenderPantalla(){
         botonPlay.remove()
         botonVolumen.remove() 
         botonConfig.remove() 
-        juego.esconderBotones()
+        
+        if(controlEncendido===1){
+            juego.esconderBotones()
+        }
+        
         
     }else{//SI LA PANTALLA ESTA APAGADA --> ENCENDER
         pantallaOn=true
@@ -84,5 +90,5 @@ function empezarJuego(){
     juego.start()
     botonPlay.disabled=true
     textoRonda.innerText = `RONDA: 0`
-    
+    controlEncendido=1
 }
