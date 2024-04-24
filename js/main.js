@@ -7,6 +7,7 @@
 let juego=null;
 let pantallaOn = false;
 let controlEncendido=0
+localStorage.setItem("RondaMax","0")
 
 //*ELEMENTOS DEL DOM
 const pantalla = document.querySelector("#pantalla")
@@ -16,6 +17,7 @@ const luzOff = document.querySelector("#luzApagado")
 const coloresJuego = document.querySelector("#coloresJuego")
 const botonesJugador = document.getElementsByClassName("botonesJugador")
 const textoRonda = document.createElement("p")
+const textoMaxRonda = document.createElement("p")
 
 
 //*CREAMOS BOTONES PARA CONTROLAR EL JUEGO
@@ -80,6 +82,8 @@ function encenderPantalla(){
         botonPlay.disabled=false
         pantalla.append(textoRonda)
         textoRonda.innerText = `Pulsa el boton 'PLAY' para empezar a jugar`
+        pantalla.append(textoMaxRonda)
+        
         //bntON.disabled = true //deshabilita la funcion de "apagado"
         //bntON.className="disabled" //estilo del cursor para botones deshabilitados
     }
@@ -90,5 +94,6 @@ function empezarJuego(){
     juego.start()
     botonPlay.disabled=true
     textoRonda.innerText = `RONDA: 0`
+    textoMaxRonda.innerText = `Ronda máxima: ${localStorage.getItem("RondaMax")}`
     controlEncendido=1
 }

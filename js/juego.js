@@ -3,6 +3,7 @@ class Juego{
     constructor(){
         //*Variables control de Juego
         this.ronda = 0
+        this.rondaMax = localStorage.getItem("RondaMax")
         this.posSecuenciaJugador = 0
         this.arrSecuenciaJugador=[]
         this.rondasTotales = 4
@@ -54,6 +55,11 @@ class Juego{
         this.patata1.remove()
         this.patata2.remove()
         this.patata3.remove()
+        this.patata4.remove()
+        this.patata5.remove()
+        this.patata6.remove()
+        this.patata7.remove()
+        textoMaxRonda.innerText=""
         
     }
 
@@ -152,6 +158,11 @@ class Juego{
             pantalla.innerText="HAS GANADO"
         }else{
             this.ronda++ 
+            if(Number(localStorage.getItem("RondaMax"))<this.ronda){
+                this.rondaMax=this.ronda
+                localStorage.setItem("RondaMax",this.rondaMax)
+            }           
+            
             this.secuencia.push(this.colorAleatorio())
             this.velocidadBrillo=this.velocidadBrillo-50
             this.arrSecuenciaJugador=[]
@@ -244,6 +255,7 @@ class Juego{
                 this.bloqueoBotones=false//activamos los botones del jugador
 
                 textoRonda.innerText=`RONDA: ${this.ronda}`
+                textoMaxRonda.innerText = `Ronda máxima: ${localStorage.getItem("RondaMax")}`
                 this.posSecuenciaJugador=0
 
                 botonesJugador[0].style.display="block"
