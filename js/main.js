@@ -7,7 +7,6 @@
 let juego=null;
 let pantallaOn = false;
 let controlEncendido=0
-localStorage.setItem("RondaMax","0")
 
 //*ELEMENTOS DEL DOM
 const pantalla = document.querySelector("#pantalla")

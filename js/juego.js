@@ -156,11 +156,15 @@ class Juego{
             this.sonidos[4].play()
             //window.alert("HAS GANADO")
             pantalla.innerText="HAS GANADO"
+            if(Number(localStorage.getItem("RondaMax"))<this.ronda){
+                this.rondaMax=this.ronda
+                localStorage.setItem("RondaMax", this.rondaMax)
+            }  
         }else{
             this.ronda++ 
             if(Number(localStorage.getItem("RondaMax"))<this.ronda){
                 this.rondaMax=this.ronda
-                localStorage.setItem("RondaMax",this.rondaMax)
+                localStorage.setItem("RondaMax", this.rondaMax)
             }           
             
             this.secuencia.push(this.colorAleatorio())
