@@ -49,6 +49,7 @@ class Juego{
         this.activarClickJugador()
 
         botonVolumen.addEventListener("click", ()=>{this.sonidos.forEach((elem)=>{
+            
                 if(elem.muted){
                     elem.muted=false
                 }else{

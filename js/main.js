@@ -83,6 +83,7 @@ function encenderPantalla(){
         pantalla.append(textoRonda)
         textoRonda.innerText = `Pulsa el boton 'PLAY' para empezar a jugar`
         pantalla.append(textoMaxRonda)
+        textoMaxRonda.innerText = `Ronda máxima: ${localStorage.getItem("RondaMax")}`
         
     }
 }

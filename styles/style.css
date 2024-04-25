@@ -14,23 +14,27 @@ body {
     background: rgb(253,45,249);
     background: linear-gradient(0deg, rgba(253,45,249,0.5945844890690651) 0%, rgba(34,193,195,0.7822595590970763) 100%);
     /*background-color: rgba(80, 79, 79, 0.8);*/
-    height: 70vh;
+    height: 50vh;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 10px;
     margin:0 auto;
-    padding-top: 20px;
+    /*padding-top: 20px;*/
 }
 
 /*PARTE DE ABAJO - TECLADO (Y RATON)*/
 footer {
-    /*  control de fondo inverso a contenidoTotal*/
-    background: linear-gradient(0deg, rgba(34,193,195,0.7822595590970763) 0%, rgba(253,45,249,0.5945844890690651)  100%);    
+       
+    background-image:
+    linear-gradient(to bottom, rgba(253,45,249,0.5945844890690651) 0%, rgba(34,193,195,0.7822595590970763)),
+    url("../images/fondos/fondoFooterSinColor.png");
+    background-size: cover;
     color: #d3cece;
-    height: 30vh;
-    display: flex;
-    justify-content: center;
+    height: 50vh;
+    width: 100vw;
+    /*display: flex;
+    justify-content: center;*/
 }
 
 /*MARCO DE PANTALLA*/
