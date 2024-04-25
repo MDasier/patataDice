@@ -208,7 +208,7 @@ class Juego{
         botonPlay.disabled = false
         botonPlay.style.opacity = "0.8"
         botonVolumen.style.opacity="1"
-        pantalla.style.background="url('../images/VeryHotPatata/gameOver.gif')"
+        pantalla.style.background="url('./images/VeryHotPatata/gameOver.gif')"
         pantalla.append(textoRonda)
         textoRonda.innerText = `Pulsa el boton 'PLAY' para empezar a jugar`
         pantalla.append(textoMaxRonda)
