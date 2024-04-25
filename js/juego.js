@@ -32,13 +32,22 @@ class Juego{
     //*METODOS 
     
     start(){
-        this.mostrarBotonesColores()
-        //botonPlay.disabled=true
+        textoMaxRonda.innerText=""
+        textoRonda.innerText=""
+        
+
+        botonPlay.disabled=true
         botonPlay.style.opacity="0.4"
+        
         this.posSecuenciaJugador=0
-        this.secuencia = [this.colorAleatorio()] 
+        this.secuencia = [this.patataAleatoria()]
+        this.arrSecuenciaJugador = []
+        this.ronda = 0
+
+        this.mostrarPatatas()
         this.mostrarSecuencia()
         this.activarClickJugador()
+
         botonVolumen.addEventListener("click", ()=>{this.sonidos.forEach((elem)=>{
                 if(elem.muted){
                     elem.muted=false
@@ -59,11 +68,12 @@ class Juego{
         this.patata5.remove()
         this.patata6.remove()
         this.patata7.remove()
-        textoMaxRonda.innerText=""
+        textoMaxRonda.remove()
+        textoRonda.remove()
         
     }
 
-    mostrarBotonesColores(){
+    mostrarPatatas(){
         //?POSICIONES 'ALEATORIAS' PARA LAS PATATAS
         let top1 = Math.floor(Math.random()*21)
         let top2 = top1 + 50
@@ -155,7 +165,7 @@ class Juego{
         if(this.ronda===this.rondasTotales){
             this.sonidos[4].play()
             //window.alert("HAS GANADO")
-            pantalla.innerText="HAS GANADO"
+            textoRonda.innerText="HAS GANADO"
             if(Number(localStorage.getItem("RondaMax"))<this.ronda){
                 this.rondaMax=this.ronda
                 localStorage.setItem("RondaMax", this.rondaMax)
@@ -167,7 +177,7 @@ class Juego{
                 localStorage.setItem("RondaMax", this.rondaMax)
             }           
             
-            this.secuencia.push(this.colorAleatorio())
+            this.secuencia.push(this.patataAleatoria())
             this.velocidadBrillo=this.velocidadBrillo-100
             this.arrSecuenciaJugador=[]
             this.mostrarSecuencia()
@@ -176,14 +186,23 @@ class Juego{
 
     }
     
-    colorAleatorio(){
+    patataAleatoria(){
         return Math.floor(Math.random()*8)
     }
 
     gameOver(){
+        this.esconderBotones()
         //window.alert('GAME OVER')
         //this.sonidos[4].play()
-        pantalla.innerText="GAME OVER"
+        botonPlay.disabled = false
+        botonPlay.style.opacity = "0.8"
+        pantalla.appendChild(botonPlay)//añadimos el boton al DOM
+        pantalla.appendChild(botonVolumen)//añadimos el boton al DOM
+        pantalla.appendChild(botonConfig)//añadimos el boton al DOM
+        pantalla.append(textoRonda)
+        textoRonda.innerText = `Pulsa el boton 'PLAY' para empezar a jugar`
+        pantalla.append(textoMaxRonda)
+        textoMaxRonda.innerText = "GAME OVER"
 
     }
 

@@ -79,12 +79,11 @@ function encenderPantalla(){
         pantalla.appendChild(botonVolumen)//añadimos el boton al DOM
         pantalla.appendChild(botonConfig)//añadimos el boton al DOM
         botonPlay.disabled=false
+        botonPlay.style.opacity = "0.8"
         pantalla.append(textoRonda)
         textoRonda.innerText = `Pulsa el boton 'PLAY' para empezar a jugar`
         pantalla.append(textoMaxRonda)
         
-        //bntON.disabled = true //deshabilita la funcion de "apagado"
-        //bntON.className="disabled" //estilo del cursor para botones deshabilitados
     }
 }
 function empezarJuego(){

@@ -65,7 +65,7 @@ footer {
 /*MODOS DE PANTALLA*/
 .encenderPantalla {
     background-color: #2b3449;
-    box-shadow: inset 0 0 15px white, 0 0 25px cyan;
+    box-shadow: inset 0 0 15px white, 0 0 15px rgb(176, 243, 243);
     color:black;
 }
 .pantallaResultados {
@@ -221,15 +221,19 @@ footer {
 /*ESTILO DE LOS BOTONES Y LUCES PC*/
 #luzEncendido{
     background-color: mediumseagreen;
+    min-height: 15px;
+    min-width: 15px;
 }
 #luzApagado{
     background-color: brown;
+    min-height: 15px;
+    min-width: 15px;
 }
 .luzON{
-    box-shadow: inset 0 0 15px mediumseagreen, 0 0 10px rgb(91, 248, 104);
+    box-shadow: inset 0 0 15px mediumseagreen, 0 0 15px rgb(91, 248, 104);
 }
 .luzOFF{
-    box-shadow: inset 0 0 15px brown, 0 0 10px rgb(204, 66, 66);
+    box-shadow: inset 0 0 15px brown, 0 0 15px rgb(204, 66, 66);
 }
 
 
