@@ -36,8 +36,8 @@ botonVolumen.className="btnControl"
 botonVolumen.style.opacity="1"
 imgVolumen.className="volumen"
 botonConfig.className="btnControl"
-botonConfig.disabled="true"
-botonConfig.style.opacity="0.4"
+//botonConfig.disabled="true"
+botonConfig.style.opacity="0.8"
 imgConfig.className="ajustes"
 textoRonda.style.position="absolute"
 textoRonda.style.top="0px"
@@ -56,7 +56,7 @@ botonConfig.appendChild(imgConfig)
 btnON.addEventListener("click", encenderPantalla)
 botonPlay.addEventListener("click", empezarJuego)
 botonConfig.addEventListener("click", ()=>{
-    //console.log("BOTON CONFIGURACION")
+    //Pensaba añadir contenido más adelante para poder cambiar el modo de juego etc.
 })
 
 //*FUNCIONES
@@ -96,6 +96,7 @@ function encenderPantalla(){
         pantalla.appendChild(botonVolumen)//añadimos el boton al DOM
         botonVolumen.style.opacity="1"
         pantalla.appendChild(botonConfig)//añadimos el boton al DOM
+        botonConfig.title="AÑADE UNA RONDA DE JUEGO CON CADA CLICK"
         
     }
 }

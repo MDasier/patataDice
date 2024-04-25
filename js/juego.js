@@ -49,6 +49,9 @@ class Juego{
         this.mostrarSecuencia()
         this.activarClickJugador()
 
+        botonConfig.addEventListener("click", ()=>{
+            this.rondasTotales++
+        })
         botonVolumen.addEventListener("click", ()=>{this.sonidos.forEach((elem)=>{
             
                 if(elem.muted){
@@ -182,7 +185,10 @@ class Juego{
             }           
             
             this.secuencia.push(this.patataAleatoria())
-            this.velocidadBrillo=this.velocidadBrillo-100
+            if(this.velocidadBrillo>500){
+                this.velocidadBrillo=this.velocidadBrillo-100
+            }            
+
             this.arrSecuenciaJugador=[]
             this.mostrarSecuencia()
         }
@@ -201,7 +207,7 @@ class Juego{
         botonPlay.disabled = false
         botonPlay.style.opacity = "0.8"
         botonVolumen.style.opacity="1"
-        
+
         pantalla.append(textoRonda)
         textoRonda.innerText = `Pulsa el boton 'PLAY' para empezar a jugar`
         pantalla.append(textoMaxRonda)
