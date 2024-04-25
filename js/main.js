@@ -33,9 +33,18 @@ const imgConfig = document.createElement("img")
 botonPlay.className="btnControl"//clase para el boton
 imgPlay.className="play"//clase para la imagen
 botonVolumen.className="btnControl"
+botonVolumen.style.opacity="1"
 imgVolumen.className="volumen"
 botonConfig.className="btnControl"
+botonConfig.disabled="true"
+botonConfig.style.opacity="0.4"
 imgConfig.className="ajustes"
+textoRonda.style.position="absolute"
+textoRonda.style.top="0px"
+textoRonda.style.right="5px"
+textoMaxRonda.style.position="absolute"
+textoMaxRonda.style.top="85%"
+textoMaxRonda.style.left="5px"
 
 //*INSERTAMOS LOS BOTONES EN EL DOM
 botonPlay.appendChild(imgPlay)//añadimos la imagen al boton
@@ -75,15 +84,18 @@ function encenderPantalla(){
         pantalla.classList.toggle("pantallaApagada")
         luzOn.classList.toggle("luzON")
         luzOff.classList.toggle("luzOFF")
-        pantalla.appendChild(botonPlay)//añadimos el boton al DOM
-        pantalla.appendChild(botonVolumen)//añadimos el boton al DOM
-        pantalla.appendChild(botonConfig)//añadimos el boton al DOM
+        
         botonPlay.disabled=false
         botonPlay.style.opacity = "0.8"
         pantalla.append(textoRonda)
         textoRonda.innerText = `Pulsa el boton 'PLAY' para empezar a jugar`
         pantalla.append(textoMaxRonda)
         textoMaxRonda.innerText = `Ronda máxima: ${localStorage.getItem("RondaMax")}`
+
+        pantalla.appendChild(botonPlay)//añadimos el boton al DOM
+        pantalla.appendChild(botonVolumen)//añadimos el boton al DOM
+        botonVolumen.style.opacity="1"
+        pantalla.appendChild(botonConfig)//añadimos el boton al DOM
         
     }
 }

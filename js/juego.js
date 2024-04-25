@@ -34,8 +34,9 @@ class Juego{
     start(){
         textoMaxRonda.innerText=""
         textoRonda.innerText=""
+        textoMaxRonda.style.top="85%"
+        textoMaxRonda.style.left="5px"
         
-
         botonPlay.disabled=true
         botonPlay.style.opacity="0.4"
         
@@ -52,8 +53,10 @@ class Juego{
             
                 if(elem.muted){
                     elem.muted=false
+                    botonVolumen.style.opacity="1"
                 }else{
                     elem.muted=true
+                    botonVolumen.style.opacity="0.5"
                 }
             })
         })
@@ -123,7 +126,7 @@ class Juego{
         coloresJuego.appendChild(this.patata3)
         this.patata3.style.display="none"
 
-        //4 PATATAS MÁS SI SE QUIERE
+        //4 PATATAS MÁS PARA AÑADIR DIFICULTAD
         this.patata4 = document.createElement("button")
         this.patata4.classList.add("botonesJugador")
         this.patata4.classList.add("patata4")
@@ -197,13 +200,18 @@ class Juego{
         //this.sonidos[4].play()
         botonPlay.disabled = false
         botonPlay.style.opacity = "0.8"
-        pantalla.appendChild(botonPlay)//añadimos el boton al DOM
-        pantalla.appendChild(botonVolumen)//añadimos el boton al DOM
-        pantalla.appendChild(botonConfig)//añadimos el boton al DOM
+        botonVolumen.style.opacity="1"
+        
         pantalla.append(textoRonda)
         textoRonda.innerText = `Pulsa el boton 'PLAY' para empezar a jugar`
         pantalla.append(textoMaxRonda)
         textoMaxRonda.innerText = "GAME OVER"
+        textoMaxRonda.style.top="35%"
+        textoMaxRonda.style.left="35%"
+
+        pantalla.appendChild(botonPlay)//añadimos el boton al DOM
+        pantalla.appendChild(botonVolumen)//añadimos el boton al DOM
+        pantalla.appendChild(botonConfig)//añadimos el boton al DOM
 
     }
 
