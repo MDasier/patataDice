@@ -102,6 +102,7 @@ footer {
     flex-direction: column;
     justify-content:end;
     align-items: end;
+    transition: all 1s;
 }
 
 #coloresJuego{

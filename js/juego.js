@@ -25,7 +25,8 @@ class Juego{
                         new Audio("./sonidos/2.wav"),
                         new Audio("./sonidos/3.wav"),
                         new Audio("./sonidos/4.wav"),
-                        new Audio("./sonidos/win.wav")
+                        new Audio("./sonidos/win.wav"),
+                        new Audio("./sonidos/exp.mp3")
                     ]
     }
 
@@ -36,7 +37,7 @@ class Juego{
         textoRonda.innerText=""
         textoMaxRonda.style.top="85%"
         textoMaxRonda.style.left="5px"
-        
+        pantalla.style.background=""
         botonPlay.disabled=true
         botonPlay.style.opacity="0.4"
         
@@ -203,11 +204,11 @@ class Juego{
     gameOver(){
         this.esconderBotones()
         //window.alert('GAME OVER')
-        //this.sonidos[4].play()
+        this.sonidos[5].play()
         botonPlay.disabled = false
         botonPlay.style.opacity = "0.8"
         botonVolumen.style.opacity="1"
-
+        pantalla.style.background="url('../images/VeryHotPatata/gameOver.gif')"
         pantalla.append(textoRonda)
         textoRonda.innerText = `Pulsa el boton 'PLAY' para empezar a jugar`
         pantalla.append(textoMaxRonda)

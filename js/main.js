@@ -7,6 +7,7 @@
 let juego=null;
 let pantallaOn = false;
 let controlEncendido=0
+let codigoSecret = ""
 
 //*ELEMENTOS DEL DOM
 const pantalla = document.querySelector("#pantalla")
@@ -56,8 +57,39 @@ botonConfig.appendChild(imgConfig)
 btnON.addEventListener("click", encenderPantalla)
 botonPlay.addEventListener("click", empezarJuego)
 botonConfig.addEventListener("click", ()=>{
-    //Pensaba añadir contenido más adelante para poder cambiar el modo de juego etc.
+    //TODO Añadir contenido más adelante para poder cambiar el modo de juego etc.
+    //?En la clase juego este boton añade una ronda a rondasTotales
 })
+
+function codigoSecreto(event){
+    if(event.code==="Keyk" || event.code==="KeyK"){
+        codigoSecret+="K"
+    }
+    if(event.code==="Keyo" || event.code==="KeyO"){
+        codigoSecret+="O"
+    }
+    if(event.code==="Keyn" || event.code==="KeyN"){
+        codigoSecret+="N"
+    }
+    if(event.code==="Keya" || event.code==="KeyA"){
+        codigoSecret+="A"
+    }
+    if(event.code==="Keym" || event.code==="KeyM"){
+        codigoSecret+="M"
+    }
+    if(event.code==="Keyi" || event.code==="KeyI"){  
+        codigoSecret+="I"
+        
+    }
+    if(event.code==="Backspace"){
+        codigoSecret=""
+    }
+    if(codigoSecret==="KONAMI"){
+        //window.alert(codigoSecret)
+        window.close()
+    }
+}
+document.addEventListener("keydown", codigoSecreto)
 
 //*FUNCIONES
 function encenderPantalla(){
