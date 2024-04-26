@@ -3,7 +3,7 @@
 
 ## [Play the Game!](https://mdasier.github.io/patataDice/)
 
-![Game Logo]("./images/fondos/fondoFooterConColor.png")
+![Game Logo](https://github.com/MDasier/patataDice/blob/master/images/fondos/fondoFooterConColor.png)
 
 
 # Descripción

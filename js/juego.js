@@ -28,6 +28,12 @@ class Juego{
                         new Audio("./sonidos/win.wav"),
                         new Audio("./sonidos/exp.mp3")
                     ]
+        this.sonidos[0].volume = 0.1
+        this.sonidos[1].volume = 0.1
+        this.sonidos[2].volume = 0.1
+        this.sonidos[3].volume = 0.1
+        this.sonidos[4].volume = 0.05
+        this.sonidos[5].volume = 0.1
     }
 
     //*METODOS 

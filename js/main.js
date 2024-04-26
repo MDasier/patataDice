@@ -57,7 +57,7 @@ botonConfig.addEventListener("click", ()=>{
     //TODO Añadir contenido más adelante para poder cambiar el modo de juego etc.
     //?En la clase juego este boton añade una ronda a rondasTotales para alargar la partida.
 })
-document.addEventListener("keydown", codigoSecreto)
+document.addEventListener("keyup", codigoSecreto)
 
 //*FUNCIONES
 function codigoSecreto(event){
@@ -85,7 +85,8 @@ function codigoSecreto(event){
     }
     if(codigoSecret==="KONAMI"){
         //window.alert(codigoSecret)
-        window.close()
+        //window.close()
+        window.location.href ="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     }
 }
 
