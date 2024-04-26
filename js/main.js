@@ -97,6 +97,7 @@ function encenderPantalla(){
     if(pantallaOn){//SI LA PANTALLA ESTA ENCENDIDA --> APAGAR
         pantallaOn=false
         textoRonda.innerText = ""
+        textoMaxRonda.innerText = ""
         pantalla.classList.toggle("encenderPantalla")
         pantalla.classList.toggle("pantallaApagada")
         luzOn.classList.toggle("luzON")
@@ -104,6 +105,7 @@ function encenderPantalla(){
         botonPlay.remove()
         botonVolumen.remove() 
         botonConfig.remove() 
+        pantalla.style.background=""
         
         if(controlEncendido===1){
             juego.esconderBotones()
