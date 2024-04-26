@@ -57,7 +57,7 @@ He recreado un pequeño ordenador en mitad la página web donde se muestra todo 
 
 # Extra Links 
 ### Presentación
-[Link]()
+[Link](https://docs.google.com/presentation/d/1FN5FZ4vTwX-86R8HaIlLnZ3XCpXjwBca6CldwrR2SxM/edit?usp=sharing)
 
 ## Deploy
 [Link](https://mdasier.github.io/patataDice/)
