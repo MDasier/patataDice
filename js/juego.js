@@ -19,7 +19,7 @@ class Juego{
         this.patata6
         this.patata7
         this.intervaloSecuencia=null
-        //*SONIDOS DE LOS BOTONES Y DE 'GANAR'
+        //*SONIDOS DE LOS BOTONES Y DE 'GANAR'/'PERDER'
         this.sonidos= [
                         new Audio("./sonidos/1.wav"),
                         new Audio("./sonidos/2.wav"),
@@ -92,7 +92,7 @@ class Juego{
         let left3 = Math.floor(Math.random()*70) + 212
         let left4 = left3 + 50
 
-        //4 PATATAS DE INICIO
+        //AL PRINCIPIO SOLO HABIA 4 PATATAS EXPLOSIVAS
         this.patata0 = document.createElement("button")
         this.patata0.classList.add("botonesJugador")
         this.patata0.classList.add("patata0")
@@ -130,7 +130,7 @@ class Juego{
         coloresJuego.appendChild(this.patata3)
         this.patata3.style.display="none"
 
-        //4 PATATAS MÁS PARA AÑADIR DIFICULTAD
+        //4 PATATAS EXPLOSIVAS MÁS PARA AÑADIR DIFICULTAD
         this.patata4 = document.createElement("button")
         this.patata4.classList.add("botonesJugador")
         this.patata4.classList.add("patata4")
@@ -172,7 +172,6 @@ class Juego{
     actualizarRonda(){
         if(this.ronda===this.rondasTotales){
             this.sonidos[4].play()
-            //window.alert("HAS GANADO")
             textoRonda.innerText="HAS GANADO"
             if(Number(localStorage.getItem("RondaMax"))<this.ronda){
                 this.rondaMax=this.ronda
@@ -216,13 +215,17 @@ class Juego{
         textoMaxRonda.style.top="35%"
         textoMaxRonda.style.left="35%"
 
-        pantalla.appendChild(botonPlay)//añadimos el boton al DOM
-        pantalla.appendChild(botonVolumen)//añadimos el boton al DOM
-        pantalla.appendChild(botonConfig)//añadimos el boton al DOM
+        pantalla.appendChild(botonPlay)
+        pantalla.appendChild(botonVolumen)
+        pantalla.appendChild(botonConfig)
 
     }
 
     clickJugador(id){
+        //? ESTE METODO CONTROLA EN CADA CLICK DEL JUGADOR QUE LA PATATA DONDE SE HA CLICADO SEA LA CORRECTA EN LA SECUENCIA
+        //? SI ES LA ULTIMA POSICION DE LA SECUENCIA 'PASA DE RONDA'
+        //? SI HA FALLADO TERMINA LA PARTIDAS
+
         if(Number(id)>=0 && (Number(id)<=3)){
             this.sonidos[Number(id)].play()
         }else{
@@ -246,17 +249,17 @@ class Juego{
         }
         
        
-    }//CONTROL EN CADA CLICK DEL JUGADOR QUE "LA PATATA" SEA CORRECTA
+    }
 
     mostrarSecuencia(){
                  
         let secuenciaIndex=0
-        this.bloqueoBotones=true//bloquear clicks del jugador
+        this.bloqueoBotones=true
         
         this.intervaloSecuencia=setInterval(()=>{    
             if(secuenciaIndex<this.secuencia.length){
 
-                if(secuenciaIndex>0){//toggle numero anterior 'si existe'
+                if(secuenciaIndex>0){
                     botonesJugador[this.secuencia[secuenciaIndex-1]].classList.toggle("active")
                     botonesJugador[this.secuencia[secuenciaIndex-1]].style.display="none"
                     
@@ -271,17 +274,18 @@ class Juego{
                     botonesJugador[7].style.display="none"
                 }
 
-                let secuenciaTemporal=this.secuencia
+                let secuenciaTemporal=this.secuencia//copiamos la secuencia para pasarla al timeout y poder usarla
                 setTimeout(()=>{
 
                     botonesJugador[secuenciaTemporal[secuenciaIndex]].classList.toggle("active")
                     botonesJugador[this.secuencia[secuenciaIndex]].style.display="block"
-                    if(secuenciaTemporal[secuenciaIndex]>=0 && (secuenciaTemporal[secuenciaIndex]<=3)){
-                        this.sonidos[secuenciaTemporal[secuenciaIndex]].play()
-                    }else{
-                        this.sonidos[(secuenciaTemporal[secuenciaIndex])-4].play()
-                    }
-                    //this.sonidos[secuenciaTemporal[secuenciaIndex]].play()
+
+                        if(secuenciaTemporal[secuenciaIndex]>=0 && (secuenciaTemporal[secuenciaIndex]<=3)){
+                            this.sonidos[secuenciaTemporal[secuenciaIndex]].play()
+                        }else{
+                            this.sonidos[(secuenciaTemporal[secuenciaIndex])-4].play()
+                        }         
+
                     secuenciaIndex++
 
                 },100)
@@ -289,9 +293,9 @@ class Juego{
 
             }else if(secuenciaIndex===this.secuencia.length){
 
-                botonesJugador[this.secuencia[secuenciaIndex-1]].classList.toggle("active")//apaga el ultimo
+                botonesJugador[this.secuencia[secuenciaIndex-1]].classList.toggle("active")
 
-                this.bloqueoBotones=false//activamos los botones del jugador
+                this.bloqueoBotones=false
 
                 textoRonda.innerText=`RONDA: ${this.ronda}`
                 textoMaxRonda.innerText = `Ronda máxima: ${localStorage.getItem("RondaMax")}`

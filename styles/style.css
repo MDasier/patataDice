@@ -20,7 +20,6 @@ body {
     align-items: center;
     gap: 10px;
     margin:0 auto;
-    /*padding-top: 20px;*/
 }
 
 /*PARTE DE ABAJO - TECLADO (Y RATON)*/
@@ -33,8 +32,6 @@ footer {
     color: #d3cece;
     height: 50vh;
     width: 100vw;
-    /*display: flex;
-    justify-content: center;*/
 }
 
 /*MARCO DE PANTALLA*/
@@ -112,9 +109,6 @@ footer {
     left: -40px;
     top:20px;
     justify-content:flex-start;
-    /*display:grid;
-    grid-template-columns: 1fr 1fr;*/
-    /*grid-template-rows: 1fr 1fr;*/
 }
 
 .botonesJugador{

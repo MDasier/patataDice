@@ -18,9 +18,7 @@ const coloresJuego = document.querySelector("#coloresJuego")
 const botonesJugador = document.getElementsByClassName("botonesJugador")
 const textoRonda = document.createElement("p")
 const textoMaxRonda = document.createElement("p")
-
-
-//*CREAMOS BOTONES PARA CONTROLAR EL JUEGO
+//CREAMOS BOTONES PARA CONTROLAR EL INICIO, VOLUMEN Y CONFIGURACION DEL JUEGO
 const botonPlay = document.createElement("button");
 const botonVolumen = document.createElement("button");
 const botonConfig = document.createElement("button");
@@ -37,7 +35,6 @@ botonVolumen.className="btnControl"
 botonVolumen.style.opacity="1"
 imgVolumen.className="volumen"
 botonConfig.className="btnControl"
-//botonConfig.disabled="true"
 botonConfig.style.opacity="0.8"
 imgConfig.className="ajustes"
 textoRonda.style.position="absolute"
@@ -58,9 +55,11 @@ btnON.addEventListener("click", encenderPantalla)
 botonPlay.addEventListener("click", empezarJuego)
 botonConfig.addEventListener("click", ()=>{
     //TODO Añadir contenido más adelante para poder cambiar el modo de juego etc.
-    //?En la clase juego este boton añade una ronda a rondasTotales
+    //?En la clase juego este boton añade una ronda a rondasTotales para alargar la partida.
 })
+document.addEventListener("keydown", codigoSecreto)
 
+//*FUNCIONES
 function codigoSecreto(event){
     if(event.code==="Keyk" || event.code==="KeyK"){
         codigoSecret+="K"
@@ -89,9 +88,9 @@ function codigoSecreto(event){
         window.close()
     }
 }
-document.addEventListener("keydown", codigoSecreto)
 
-//*FUNCIONES
+
+
 function encenderPantalla(){
     
     if(pantallaOn){//SI LA PANTALLA ESTA ENCENDIDA --> APAGAR
