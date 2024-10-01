@@ -8,23 +8,14 @@
 
 # Descripción
 
-Es el primer proyecto en solitario como alumno de IRONHACK. La idea era crear un pequeño juego en la semana 3 del Bootcamp.
-En mi caso el juego está inspirado en el mítico SIMON DICE.
+Juego inspirado en el mítico SIMON DICE.
 He recreado un pequeño ordenador en mitad la página web donde se muestra todo el juego.
 
 
 # Funcionalidades principales:
 
-- Se puede apagar y encender el ordenador.
-- Empezar una partida y al terminarla, ya sea por fallar o por ganar... empezar otra partida.
-- Se puede quitar el sonido y volver a activarlo.
-- Mediante el 'localStorage' se guarda la ronda máxima en la que hemos jugado.
-- No terminé la 'responsividad' de la web pero está controlado que la pantalla esté siempre centrada y no se cambie de tamaño.
-
-# Funcionalidades futuras:
-
-- Que las patatas explosivas cada vez sean más a partir de cierta ronda.
-- Mejorar sonidos y el control de los sonidos.
+- Control de sonido.
+- Guardado en 'localStorage' la ronda máxima en la que hemos jugado.
 
 
 # Tech!:
@@ -37,13 +28,6 @@ He recreado un pequeño ordenador en mitad la página web donde se muestra todo 
 - LocalStorage
 - Photoshop
 - BONUS: control de eventos de teclado para 'codigo secreto'
-
-# Estados
-
-- PC apagado/Encendido
-- Partida en marcha
-- Partida 'Game Over'
-- Funcion de 'Codigo Secreto'
 
 
 # Estructura de proyecto simple:
